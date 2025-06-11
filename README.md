@@ -9,8 +9,8 @@ substreams build
 substreams auth
 <FOLLOW DIRECTIONS>
  . ./.substreams.env <AUTH_TOKEN_NO_QUOTES>
-substreams gui -e mainnet.eth.streamingfast.io:443 substreams.yaml map_events -s 345473248 -t +1
-substreams gui -e mainnet.eth.streamingfast.io:443 substreams.yaml map_events_calls -s 345473248 -t +1
+substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_events -s 345473248 -t +1
+substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_events_calls -s 345473248 -t +1
 
 
 ```

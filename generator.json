@@ -1,0 +1,21 @@
+{
+  "generator": "evm-events-calls-raw",
+  "state": {
+    "name": "v1",
+    "chainName": "arbitrum",
+    "contracts": [
+      {
+        "name": "updraft_factory",
+        "trackEvents": true,
+        "trackCalls": true,
+        "address": "0x08e87242f23904e22da12a392b2facbb56c2959a",
+        "initialBlock": 345473248,
+        "trackFactory": null,
+        "factoryCreationEvent": "",
+        "factoryCreationEventFieldIdx": null
+      }
+    ],
+    "dynamic_contracts": null,
+    "confirm_enough_contracts": true
+  }
+}

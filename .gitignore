@@ -1,0 +1,2 @@
+# substreams auth file - in case dev runs 'substreams auth' outside of proj dirs
+.substreams.env

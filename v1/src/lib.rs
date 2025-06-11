@@ -1,3 +1,6 @@
+
+mod idea;
+mod abi;
 mod pb;
 use hex_literal::hex;
 use pb::contract::v1 as contract;

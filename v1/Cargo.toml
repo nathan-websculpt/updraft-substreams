@@ -8,13 +8,15 @@ name = "substreams"
 crate-type = ["cdylib"]
 
 [dependencies]
-hex-literal = "0.3.4"
+ethabi = "18.0.0"  # For decoding event data
+hex-literal = "1.0.0"
 num-bigint = "0.4"
 num-traits = "0.2.15"
-prost = "0.13.3"
-prost-types = "0.13.3"
-substreams = "0.6.0"
-substreams-ethereum = "0.10.2"
+prost = "0.13.5"
+prost-types = "0.13.5"
+substreams = "0.6.1"
+substreams-ethereum = "0.10.5"
+# substreams-helper = "0.0.2"
 
 # Required so that ethabi > ethereum-types build correctly under wasm32-unknown-unknown
 [target.wasm32-unknown-unknown.dependencies]

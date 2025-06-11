@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package idea.v1;
+
+message IdeaCreated {
+  string idea = 1;             // Indexed addr
+  string creator = 2;          // Indexed addr
+  string contributor_fee = 3;  // uint256
+  string contribution = 4;     // uint256
+  bytes data = 5;              
+}
+
+message IdeaCreatedEvents {
+  repeated IdeaCreated events = 1;
+}

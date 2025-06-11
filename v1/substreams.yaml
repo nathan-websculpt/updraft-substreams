@@ -9,6 +9,7 @@ imports:
 protobuf:
   files:
     - contract.proto
+    - idea.proto
   importPaths:
     - ./proto
   excludePaths:
@@ -32,6 +33,7 @@ modules:
       - source: sf.ethereum.type.v2.Block
     output:
       type: proto:contract.v1.Events
+
   - name: map_calls
     kind: map
     initialBlock: 345473248
@@ -43,6 +45,7 @@ modules:
       - source: sf.ethereum.type.v2.Block
     output:
       type: proto:contract.v1.Calls
+
   - name: map_events_calls
     kind: map
     initialBlock: 345473248
@@ -51,4 +54,13 @@ modules:
       - map: map_calls
     output:
       type: proto:contract.v1.EventsCalls
+      
+  - name: map_idea_created
+    kind: map
+    initialBlock: 345473248
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:idea.v1.IdeaCreatedEvents
+      
 network: arbitrum

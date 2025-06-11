@@ -11,6 +11,7 @@ protobuf:
     - contract.proto
     - idea.proto
     - solution.proto
+    - user.proto
   importPaths:
     - ./proto
   excludePaths:
@@ -71,5 +72,13 @@ modules:
       - source: sf.ethereum.type.v2.Block
     output:
       type: proto:solution.v1.SolutionCreatedEvents
+
+  - name: map_user_updated
+    kind: map
+    initialBlock: 345473248
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:user.v1.ProfileUpdatedEvents
       
 network: arbitrum

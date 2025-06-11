@@ -38,3 +38,10 @@ pub mod solution {
         // @@protoc_insertion_point(solution.v1)
     }
 }
+pub mod user {
+    // @@protoc_insertion_point(attribute:user.v1)
+    pub mod v1 {
+        include!("user.v1.rs");
+        // @@protoc_insertion_point(user.v1)
+    }
+}

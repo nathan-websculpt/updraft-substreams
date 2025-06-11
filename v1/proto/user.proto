@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package user.v1;
+
+message ProfileUpdated {
+  string owner = 1;             // Indexed addr
+  bytes data = 2;              
+}
+
+message ProfileUpdatedEvents {
+  repeated ProfileUpdated events = 1;
+}

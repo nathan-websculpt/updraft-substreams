@@ -1,4 +1,4 @@
-
+mod user;
 mod idea;
 mod solution;
 mod abi;

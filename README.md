@@ -19,8 +19,13 @@ substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_idea_created 
 -- VIEW SOLUTION-CREATED EVENTS --
 substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_solution_created -s 346190110 -t +1
 
+-- VIEW PROFILE-UPDATED EVENTS --
+substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_user_updated -s 345846756 -t +100
+
 ```
 
 #### Notes
 
-After adding or editing protos, run `substreams protogen` and then `substreams build`
+After adding or editing protos
+
+add file to substreams.yaml under: `protobuf > files`, then run `substreams protogen` (to gen the .rs files), and then run `substreams build`

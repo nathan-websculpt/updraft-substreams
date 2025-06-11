@@ -1,5 +1,6 @@
 
 mod idea;
+mod solution;
 mod abi;
 mod pb;
 use hex_literal::hex;

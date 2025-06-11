@@ -31,3 +31,10 @@ pub mod sf {
         }
     }
 }
+pub mod solution {
+    // @@protoc_insertion_point(attribute:solution.v1)
+    pub mod v1 {
+        include!("solution.v1.rs");
+        // @@protoc_insertion_point(solution.v1)
+    }
+}

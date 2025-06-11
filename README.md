@@ -16,5 +16,11 @@ substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_calls -s 3454
 -- VIEW IDEA-CREATED EVENTS --
 substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_idea_created -s 345976039 -t +10000
 
+-- VIEW SOLUTION-CREATED EVENTS --
+substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_solution_created -s 346190110 -t +1
 
 ```
+
+#### Notes
+
+After adding or editing protos, run `substreams protogen` and then `substreams build`

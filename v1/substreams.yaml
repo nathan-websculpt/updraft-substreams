@@ -10,6 +10,7 @@ protobuf:
   files:
     - contract.proto
     - idea.proto
+    - solution.proto
   importPaths:
     - ./proto
   excludePaths:
@@ -62,5 +63,13 @@ modules:
       - source: sf.ethereum.type.v2.Block
     output:
       type: proto:idea.v1.IdeaCreatedEvents
+      
+  - name: map_solution_created
+    kind: map
+    initialBlock: 345473248
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:solution.v1.SolutionCreatedEvents
       
 network: arbitrum

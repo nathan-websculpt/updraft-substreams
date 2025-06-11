@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package solution.v1;
+
+message SolutionCreated {
+  string solution = 1;
+  string creator = 2;
+  string idea = 3;
+  string funding_token = 4;
+  string stake = 5;
+  string goal = 6;
+  string deadline = 7;              // TODO: uint256 as uint64 (Unix timestamp)?
+  string contributor_fee = 8;
+  bytes data = 9;
+}
+
+message SolutionCreatedEvents {
+    repeated SolutionCreated events = 1;
+}

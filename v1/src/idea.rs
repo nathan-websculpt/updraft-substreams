@@ -5,6 +5,11 @@ use substreams::Hex;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
 
+use substreams::store::{StoreGet, StoreGetProto, StoreNew, StoreSet, StoreSetProto};
+
+use crate::pb::contract::v1 as contract;
+use crate::pb::contract::v1::Events;
+
 
 #[substreams::handlers::map]
 fn map_idea_created(block: Block) -> Result<IdeaCreatedEvents, substreams::errors::Error> {
@@ -23,4 +28,37 @@ fn map_idea_created(block: Block) -> Result<IdeaCreatedEvents, substreams::error
     }
 
     Ok(IdeaCreatedEvents { events })
+}
+
+// for the emited Idea Addresses that happen on an Idea-Created Event
+#[substreams::handlers::store]
+fn store_idea_contracts_deployed(ideas: IdeaCreatedEvents, store: StoreSetProto<IdeaCreated>) {
+    for idea in ideas.events {
+        let idea_address = &idea.idea;
+        //store.set(idea.idea, format!("idea:{idea_address}"), &idea);
+        let ord: u64 = 0;
+
+        store.set(ord, idea_address, &idea);
+
+    }
+}
+
+#[substreams::handlers::map]
+fn map_idea_events(block: Block, ideas_store: StoreGetProto<IdeaCreated>) -> Result<Events, substreams::errors::Error> {
+    let mut events = Events::default();
+
+    for trx in block.transactions() {
+        for (log, call_view) in trx.logs_with_calls() {
+            let idea_address = &Hex(&log.address).to_string();
+
+            let idea = match ideas_store.get_last(format!("idea:{idea_address}")) {
+                Some(idea) => idea,
+                None => { continue; }
+            };
+
+            // use the idea information from the store
+        }
+    }
+
+    Ok(events)
 }

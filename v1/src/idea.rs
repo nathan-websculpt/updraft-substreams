@@ -63,23 +63,3 @@ fn map_idea_events(block: Block, ideas_store: StoreGetProto<IdeaCreated>) -> Res
     Ok(IdeaContributionEvents { events })
 }
 
-// #[substreams::handlers::map]
-// fn map_idea_events(block: Block, ideas_store: StoreGetProto<IdeaCreated>) -> Result<Events, substreams::errors::Error> {
-//     let mut events = Events::default();
-
-//     for trx in block.transactions() {
-//         for (log, call_view) in trx.logs_with_calls() {
-//             let idea_address = &Hex(&log.address).to_string();
-//             if store.has(format!("idea:{idea_address}")) {
-//                 // decode event from the child contract
-//                 if log.matches_signature("Contributed(address indexed addr,uint256 positionIndex,uint256 amount,uint256 totalShares,uint256 totalTokens)") {
-//                     let val = log.param(0).unwrap().to_u256();
-//                     // handle event
-//                 }
-//             }
-//         }
-//     }
-
-//     Ok(events)
-// }
-

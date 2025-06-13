@@ -28,7 +28,10 @@ substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_user_updated 
 substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_idea_events --limit-processed-blocks 600000 -s 345949351 -t +2
 
 substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_idea_events --limit-processed-blocks 600000 --start-block 345976339 --stop-block 346012422
-
+^^^^
+Idea-Created: https://arbiscan.io/tx/0x3e61bf4fb27c37332c9ed510c8256055a96a3ecb768bf33fc86e899cb113e0f6#eventlog
+Idea Addr: https://arbiscan.io/address/0x8D68AF66509e4020aF3bbDF08fA70D56Dad92005
+Contribution event on that Idea Addr: https://arbiscan.io/address/0x8D68AF66509e4020aF3bbDF08fA70D56Dad92005#events
 
 
 

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package solutioncontribution.v1;
+
+message SolutionContribution {
+  string addr = 1;             // Indexed addr
+  string positionIndex = 2;    
+  string amount = 3;  // uint256
+  string totalShares = 4;     // uint256
+  string totalTokens = 5;        
+}
+
+message SolutionContributionEvents {
+  repeated SolutionContribution events = 1;
+}

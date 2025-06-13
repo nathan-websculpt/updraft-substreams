@@ -22,6 +22,8 @@ pub struct SolutionCreated {
     pub contributor_fee: ::prost::alloc::string::String,
     #[prost(bytes="vec", tag="9")]
     pub data: ::prost::alloc::vec::Vec<u8>,
+    #[prost(uint64, tag="10")]
+    pub created_at_block: u64,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

@@ -45,6 +45,13 @@ pub mod solution {
         // @@protoc_insertion_point(solution.v1)
     }
 }
+pub mod solutioncontribution {
+    // @@protoc_insertion_point(attribute:solutioncontribution.v1)
+    pub mod v1 {
+        include!("solutioncontribution.v1.rs");
+        // @@protoc_insertion_point(solutioncontribution.v1)
+    }
+}
 pub mod user {
     // @@protoc_insertion_point(attribute:user.v1)
     pub mod v1 {

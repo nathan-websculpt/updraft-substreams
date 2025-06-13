@@ -13,6 +13,7 @@ protobuf:
     - solution.proto
     - user.proto
     - ideacontribution.proto
+    - solutioncontribution.proto
   importPaths:
     - ./proto
   excludePaths:
@@ -82,6 +83,14 @@ modules:
     output:
       type: proto:solution.v1.SolutionCreatedEvents
 
+  # for the emited Solution Addresses that happen on an Solution-Created Event
+  - name: store_solution_contracts_deployed
+    kind: store
+    updatePolicy: set
+    valueType: proto:solution.v1.SolutionCreatedEvent
+    inputs:
+      - map: map_solution_created
+
   # events for Idea Addresses
   - name: map_idea_events
     kind: map
@@ -90,6 +99,15 @@ modules:
       - store: store_idea_contracts_deployed
     output:
       type: proto:ideacontribution.v1.IdeaContributionEvents
+
+  # events for Solution Addresses
+  - name: map_solution_events
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+      - store: store_solution_contracts_deployed
+    output:
+      type: proto:solutioncontribution.v1.SolutionContributionEvents
 
   - name: map_user_updated
     kind: map

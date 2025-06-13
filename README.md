@@ -11,20 +11,20 @@ substreams auth
  . ./.substreams.env <AUTH_TOKEN_NO_QUOTES>
 
 
-substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_events -s 345473248 -t +1
-substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_events_calls -s 345473248 -t +1
-substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_calls -s 345473248 -t +1
-
 -- VIEW IDEA-CREATED EVENTS --
+
 substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_idea_created -s 345976339 -t +1
 
 -- VIEW SOLUTION-CREATED EVENTS --
+
 substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_solution_created -s 346190110 -t +1
 
 -- VIEW PROFILE-UPDATED EVENTS --
+
 substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_user_updated -s 345846756 -t +100
 
 -- VIEW DYNAMIC IDEAS (FROM IDEA ADDRESSES [IDEA-CREATED EVENTS]) --
+
 substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_idea_events --limit-processed-blocks 600000 -s 345949351 -t +2
 
 substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_idea_events --limit-processed-blocks 600000 --start-block 345976339 --stop-block 346012422
@@ -34,6 +34,17 @@ Idea Addr: https://arbiscan.io/address/0x8D68AF66509e4020aF3bbDF08fA70D56Dad9200
 Contribution event on that Idea Addr: https://arbiscan.io/address/0x8D68AF66509e4020aF3bbDF08fA70D56Dad92005#events
 
 
+-- VIEW DYNAMIC SOLUTIONS (FROM SOLUTION ADDRESSES [SOLUTION-CREATED EVENTS]) --
+
+substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_solution_events --limit-processed-blocks 800000 --start-block 346190109 --stop-block 346261880
+
+
+-----------------------
+-- VIEW GENERIC DATA --
+
+substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_events -s 345473248 -t +1
+substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_events_calls -s 345473248 -t +1
+substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_calls -s 345473248 -t +1
 
 ```
 

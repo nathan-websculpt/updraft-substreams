@@ -4,13 +4,7 @@ use abi::updraft::events::IdeaCreated as IdeaCreated_abi;
 use substreams::Hex;
 use substreams_ethereum::pb::eth::v2::Block;
 use substreams_ethereum::Event;
-
 use substreams::store::{StoreGet, StoreGetProto, StoreNew, StoreSet, StoreSetProto};
-
-use crate::pb::contract::v1 as contract;
-use crate::pb::contract::v1::Events;
-
-
 use crate::pb::ideacontribution::v1::{IdeaContribution, IdeaContributionEvents};
 use abi::idea::events::Contributed as IdeaContribution_abi;
 

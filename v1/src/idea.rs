@@ -37,13 +37,14 @@ fn store_idea_contracts_deployed(ideas: IdeaCreatedEvents, store: StoreSetProto<
     for idea in ideas.events {
         let idea_address = &idea.idea;
         store.set(idea.created_at_block, format!("idea:{idea_address}"), &idea);
-
     }
 }
 
 #[substreams::handlers::map]
 fn map_idea_events(block: Block, ideas_store: StoreGetProto<IdeaCreated>) -> Result<Events, substreams::errors::Error> {
     let mut events = Events::default();
+
+    // let mut events: Vec<ItemContribution> = vec![]; // TODO: 
 
     for trx in block.transactions() {
         for (log, call_view) in trx.logs_with_calls() {
@@ -54,9 +55,34 @@ fn map_idea_events(block: Block, ideas_store: StoreGetProto<IdeaCreated>) -> Res
                 None => { continue; }
             };
 
-            // use the idea information from the store
+            // use the idea information from the store            
+            // events.push(
+                
+            //     //Contributed event
+            // );
         }
     }
 
     Ok(events)
 }
+
+// #[substreams::handlers::map]
+// fn map_idea_events(block: Block, ideas_store: StoreGetProto<IdeaCreated>) -> Result<Events, substreams::errors::Error> {
+//     let mut events = Events::default();
+
+//     for trx in block.transactions() {
+//         for (log, call_view) in trx.logs_with_calls() {
+//             let idea_address = &Hex(&log.address).to_string();
+//             if store.has(format!("idea:{idea_address}")) {
+//                 // decode event from the child contract
+//                 if log.matches_signature("Contributed(address indexed addr,uint256 positionIndex,uint256 amount,uint256 totalShares,uint256 totalTokens)") {
+//                     let val = log.param(0).unwrap().to_u256();
+//                     // handle event
+//                 }
+//             }
+//         }
+//     }
+
+//     Ok(events)
+// }
+

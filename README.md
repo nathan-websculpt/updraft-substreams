@@ -25,8 +25,9 @@ substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_solution_crea
 substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_user_updated -s 345846756 -t +100
 
 -- VIEW DYNAMIC IDEAS (FROM IDEA ADDRESSES [IDEA-CREATED EVENTS]) --
-substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_idea_events --limit-processed-blocks 600000 -s 345976039 -t +1000
 substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_idea_events --limit-processed-blocks 600000 -s 345949351 -t +2
+
+substreams gui -e arb-one.streamingfast.io:443 substreams.yaml map_idea_events --limit-processed-blocks 600000 --start-block 345976339 --stop-block 346012422
 
 
 

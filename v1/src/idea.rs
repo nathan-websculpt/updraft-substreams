@@ -23,6 +23,7 @@ fn map_idea_created(block: Block) -> Result<IdeaCreatedEvents, substreams::error
                 contributor_fee: event.contributor_fee.to_string(),
                 contribution: event.contribution.to_string(),
                 data: event.data,
+                created_at_block: block.number,
             });
         }
     }
@@ -35,10 +36,7 @@ fn map_idea_created(block: Block) -> Result<IdeaCreatedEvents, substreams::error
 fn store_idea_contracts_deployed(ideas: IdeaCreatedEvents, store: StoreSetProto<IdeaCreated>) {
     for idea in ideas.events {
         let idea_address = &idea.idea;
-        //store.set(idea.idea, format!("idea:{idea_address}"), &idea);
-        let ord: u64 = 0;
-
-        store.set(ord, idea_address, &idea);
+        store.set(idea.created_at_block, format!("idea:{idea_address}"), &idea);
 
     }
 }

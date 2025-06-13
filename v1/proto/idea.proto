@@ -8,6 +8,7 @@ message IdeaCreated {
   string contributor_fee = 3;  // uint256
   string contribution = 4;     // uint256
   bytes data = 5;              
+  uint64 created_at_block = 6;
 }
 
 message IdeaCreatedEvents {

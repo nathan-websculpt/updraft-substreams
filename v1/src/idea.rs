@@ -11,6 +11,10 @@ use crate::pb::contract::v1 as contract;
 use crate::pb::contract::v1::Events;
 
 
+use crate::pb::ideacontribution::v1::{IdeaContribution, IdeaContributionEvents};
+use abi::idea::events::Contributed as IdeaContribution_abi;
+
+
 #[substreams::handlers::map]
 fn map_idea_created(block: Block) -> Result<IdeaCreatedEvents, substreams::errors::Error> {
     let mut events = vec![];
@@ -41,29 +45,22 @@ fn store_idea_contracts_deployed(ideas: IdeaCreatedEvents, store: StoreSetProto<
 }
 
 #[substreams::handlers::map]
-fn map_idea_events(block: Block, ideas_store: StoreGetProto<IdeaCreated>) -> Result<Events, substreams::errors::Error> {
-    let mut events = Events::default();
+fn map_idea_events(block: Block, ideas_store: StoreGetProto<IdeaCreated>) -> Result<IdeaContributionEvents, substreams::errors::Error> {
+    let mut events: Vec<IdeaContribution> = vec![]; 
 
-    // let mut events: Vec<ItemContribution> = vec![]; // TODO: 
-
-    for trx in block.transactions() {
-        for (log, call_view) in trx.logs_with_calls() {
-            let idea_address = &Hex(&log.address).to_string();
-
-            let idea = match ideas_store.get_last(format!("idea:{idea_address}")) {
-                Some(idea) => idea,
-                None => { continue; }
-            };
-
-            // use the idea information from the store            
-            // events.push(
-                
-            //     //Contributed event
-            // );
+    for log in block.logs() {
+        if let Some(event) = IdeaContribution_abi::match_and_decode(log.log) {
+            events.push(IdeaContribution {
+                addr: Hex::encode(event.addr),
+                position_index: event.position_index.to_string(),
+                amount: event.amount.to_string(),
+                total_shares: event.total_shares.to_string(),
+                total_tokens: event.total_tokens.to_string(),
+            });
         }
     }
 
-    Ok(events)
+    Ok(IdeaContributionEvents { events })
 }
 
 // #[substreams::handlers::map]

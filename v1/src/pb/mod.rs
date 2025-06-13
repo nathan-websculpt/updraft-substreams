@@ -13,6 +13,13 @@ pub mod idea {
         // @@protoc_insertion_point(idea.v1)
     }
 }
+pub mod ideacontribution {
+    // @@protoc_insertion_point(attribute:ideacontribution.v1)
+    pub mod v1 {
+        include!("ideacontribution.v1.rs");
+        // @@protoc_insertion_point(ideacontribution.v1)
+    }
+}
 pub mod sf {
     pub mod ethereum {
         pub mod r#type {

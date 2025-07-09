@@ -74,6 +74,15 @@ modules:
     valueType: proto:idea.v1.IdeaCreatedEvent
     inputs:
       - map: map_idea_created
+
+  # events for Idea Addresses
+  - name: map_idea_events
+    kind: map
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+      - store: store_idea_contracts_deployed
+    output:
+      type: proto:ideacontribution.v1.IdeaContributionEvents
       
   - name: map_solution_created
     kind: map
@@ -90,15 +99,6 @@ modules:
     valueType: proto:solution.v1.SolutionCreatedEvent
     inputs:
       - map: map_solution_created
-
-  # events for Idea Addresses
-  - name: map_idea_events
-    kind: map
-    inputs:
-      - source: sf.ethereum.type.v2.Block
-      - store: store_idea_contracts_deployed
-    output:
-      type: proto:ideacontribution.v1.IdeaContributionEvents
 
   # events for Solution Addresses
   - name: map_solution_events
